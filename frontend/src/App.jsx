@@ -1,4 +1,5 @@
 import {Route, Routes} from 'react-router-dom';
+import "./styles/home.css";
 import Home from './pages/Home';
 import CreatePost from './pages/CreatePost';
 import ShowPost from './pages/ShowPost';
@@ -13,8 +14,8 @@ const App = () => {
     <Route path='/' element={<Home />} />
     <Route path='/posts/create' element={<CreatePost />} />
     <Route path='/posts/edit/:id' element={<EditPost />} />
-    <Route path='.posts/details/:id' element={<ShowPost />} />
-    <Route path='.posts/delete/:id' element={<DeletePost />} />
+    <Route path='/posts/details/:id' element={<ShowPost />} />
+    <Route path='/posts/delete/:id' element={<DeletePost />} />
    </Routes>
   )
 }
