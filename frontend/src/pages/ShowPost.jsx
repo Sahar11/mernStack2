@@ -4,16 +4,17 @@ import { useParams } from "react-router-dom";
 import Spinner from "../components/Spinner";
 
 const ShowPost = () => {
-  const [book, setBook] = useState([]);
+  const [post, setPost] = useState([]);
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
 
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`http://localhost:5555/books/${id}`)
+      .get(`http://localhost:5555/posts/${id}`)
       .then((response) => {
-        setBook(response.data.book);
+        setPost(response.data.post);
+        console.log(response.data);
         setLoading(false);
       })
       .catch((error) => {
@@ -24,36 +25,38 @@ const ShowPost = () => {
 
   return (
     <div className="p-4">
-      ∂
-      <BackButton />
-      <h1 className="text-3xl my-4">Show Book</h1>
+      <h1 className="text-3xl my-4">Post</h1>
       {loading ? (
         <Spinner />
       ) : (
-        <div className="flex flex-col border-2 border-sky-400 rounded-xl w-fit p-4">
-          <div className="my-4">
-            <span className="text-xl mr-4 text-gray-500">Id</span>
-            <span>{book._id}</span>
+        <div className="flex flex-row w-fit p-4 ">
+          <div className="my-4 mr-4">
+            <span className="text-xl mr-4 text-blue-500">Id</span>
+            <span>{post._id}</span>
           </div>
-          <div className="my-4">
-            <span className="text-xl mr-4 text-gray-500">Title</span>
-            <span>{book.title}</span>
+          <div className="my-4 mr-4">
+            <span className="text-xl mr-4 text-blue-500">Heading</span>
+            <span>{post.heading}</span>
           </div>
-          <div className="my-4">
-            <span className="text-xl mr-4 text-gray-500">Author</span>
-            <span>{book.author}</span>
+          <div className="my-4 mr-4">
+            <span className="text-xl mr-4 text-blue-500"></span>
+            <span>{post.image}</span>
           </div>
-          <div className="my-4">
-            <span className="text-xl mr-4 text-gray-500">Publish Year</span>
-            <span>{book.publishYear}</span>
+          <div className="my-4 mr-4">
+            <span className="text-xl mr-4 text-blue-500">Author</span>
+            <span>{post.author}</span>
           </div>
-          <div className="my-4">
-            <span className="text-xl mr-4 text-gray-500">Create Time</span>
-            <span>{new Date(book.createAt).toString()}</span>
+          <div className="my-4 mr-4">
+            <span className="text-xl mr-4 text-blue-500">Publish Year</span>
+            <span>{post.publishYear}</span>
           </div>
-          <div className="my-4">
-            <span className="text-xl mr-4 text-gray-500">Last Update Time</span>
-            <span>{new Date(book.updatedAt).toString()}</span>
+          <div className="my-4 mr-4">
+            <span className="text-xl mr-4 text-blue-500">Post</span>
+            <span>{post.post}</span>
+          </div>
+          <div className="my-4 mr-4">
+            <span className="text-xl mr-4 text-blue-500">Posted on</span>
+            <span>{new Date(post.updatedAt).toString()}</span>
           </div>
         </div>
       )}
