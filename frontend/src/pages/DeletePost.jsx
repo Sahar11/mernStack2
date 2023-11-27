@@ -14,7 +14,7 @@ export const DeletePost = () => {
   const handleDeleteBook = () => {
     setLoading(true);
     axios.delete(`http://localhost:5555/posts/${id}`)
-    .the(() => {
+    .then(() => {
       setLoading(false);
       navigate("/");
     })

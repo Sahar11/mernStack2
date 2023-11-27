@@ -4,6 +4,7 @@ import axios from "axios";
 import Spinner from "../components/Spinner";
 import { Link } from "react-router-dom";
 import "../styles/home.css";
+import { MdOutlineAddBox } from "react-icons/md";
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
@@ -28,6 +29,9 @@ const Home = () => {
     <div className="p-4">
       <div className="flex justify-between items-center">
       <h1 className="text-3xl my-8">Home Page</h1>
+      <Link to="/books/create">
+          <MdOutlineAddBox className="text-sky-800 text-4xl" />
+        </Link>
       </div>
       <div className="flex justify-center items-center gap-x-4">
       <table className="w-full border-separate border-spacing-2">
